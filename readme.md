@@ -50,9 +50,9 @@ db.createCollection('author_job')
 
 ## Starting services
 
-### ```1.``` Open ```2 terminals``` in the folder ```model_building```
+### ```1.``` Open ```2 terminals``` in the folder ```model-building```
 ````
-python3 build-annotator.py
+python3 build-model.py
 python3 auto-annotator.py
 ````
 
@@ -61,4 +61,4 @@ python3 auto-annotator.py
 chmod +x bash.sh
 ./bash.sh
 ````
-### ```3.``` Open browser, enter ```http://0.0.0.0:7000``` 
+### ```3.``` Open browser, enter ```http://0.0.0.0:5000``` 
