@@ -74,7 +74,7 @@ def load_profile():
 @main.route('/profile')
 @login_required
 def profile():
-     ''' Renders the profile window after user clicks 'profile'
+    ''' Renders the profile window after user clicks 'profile'
         or when user log in
     '''
     from .pending_jobs import generate_template
@@ -130,7 +130,7 @@ def upload():
 @main.route('/annotate')
 @login_required
 def annotate():
-  '''Renders drawing window after user clicks 'annotate'.
+    '''Renders drawing window after user clicks 'annotate'.
 
     This function takes image details as arguments and renders the drawing window.
 
@@ -216,7 +216,7 @@ def updateXMLforImg(foldername, filename):
 @main.route('/AnnotationCache/<foldername>/<filename>', methods = ['GET'])
 @login_required
 def updateXMLTemplate(foldername, filename):
-   '''Sends XML template for annotations.
+    '''Sends XML template for annotations.
 
     Request Arguments:
         foldername: Folder name.

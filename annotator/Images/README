@@ -1,7 +1,0 @@
-------------------------------------------------------------------------------------------------------
-author              : Vijay Chilaka <cs17b008@iittp.ac.in>
-date                : 
-sub-folder names    : The username provided by the platform user is taken as the sub-folder name.  
-description         : At the initial stage Each sub folder in this folder(user-data) contain all the 
-                      folders and files taken from the model_building(path:lib/model_building) folder.   
--------------------------------------------------------------------------------------------------------
