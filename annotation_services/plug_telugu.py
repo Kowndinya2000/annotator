@@ -1,3 +1,12 @@
+# ----------------------------------------------------------------------
+# This script invokes Tesseract OCR API for telugu language.
+# It takes image path as an input an returns annotations
+# made by tesseract in the form of a json file.
+#
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 15/05/2021
+#
+#-----------------------------------------------------------------------
 import pytesseract
 from pytesseract import Output
 import numpy as np
@@ -10,6 +19,19 @@ tessdata_dir_config = r'--tessdata-dir "/usr/share/tesseract-ocr/4.00/tessdata"'
 
 
 def get_annotations_data_telugu(im_path):
+    """Obtaining annotations using Tesseract OCR(telugu language).
+    This function takes image path as input and invokes Tesseract OCR.
+    And then returns the annotations as output in the form of a json string.
+    Args:
+        im_path: Way to the file where image is available.
+    Returns:
+        A json string that contains labels and the coordinates of the annotations.
+        For example,
+            {
+                label1 : [x1, y1, x2, y2],
+                label2 : [a1, b1, a2, b2]
+            }
+    """  
     print(im_path)
 
     img_path = im_path
