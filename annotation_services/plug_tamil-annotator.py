@@ -20,8 +20,7 @@ app.config['UPLOAD_FOLDER'] = os.path.join(root_directory,'model-building','anno
 def allowed_file(filename):
     ''' Checking wether the file has extension of type 'jpg'.
         Args:
-        filename: 
-                  Name of the file(image).
+                  filename: Name of the file(image).
         Returns:
                   File name without extensions.
     '''
