@@ -1,5 +1,10 @@
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 25/11/2020
+#----------------------------------------------
 from time import sleep
 def writeToDB(path):
+    ''' This function writes the annotations from XML file to the database '''
     sleep(2)
     try:
         if("\n" in path):

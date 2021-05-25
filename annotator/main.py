@@ -32,15 +32,24 @@ main = Blueprint('main', __name__)
 
 i=0
 #----------------------------------------------
-# @author: Reena Deshmukh <cs16b029@iittp.ac.in>
-# @date: 12/02/2020
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 25/11/2020
 #----------------------------------------------
 @main.route('/home')
 def home():
+    ''' Renders the home page (start screen)
+    '''
     return render_template('home.html')
+
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/doanno',methods = ['POST'])
 @login_required
 def doanno():
+    ''' Returns list of existing models and model pools for a logged in user
+    '''
     from .prepare_auto import prepare_auto_pool_template
     model_data = prepare_auto_pool_template(current_user.name)
     if(model_data != False):
@@ -53,29 +62,58 @@ def doanno():
         return resp_data
     else:
         return "False"
+
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/')
 def index():
+    ''' Renders home page
+    '''
     return render_template('index.html')
+
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/logged_out')
 def logged_out():
+    ''' Renders page on logging out  
+    '''
     return render_template('index-logout.html')
+
+
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/connect')
 @login_required
 def load_jobs():
+    ''' Annotation jobs loading page after a users loggs in
+    '''
     return render_template('load_jobs.html')
+
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/load')
 @login_required
 def load_profile():
+    ''' Renders profile page containing documents 
+    '''
     return render_template('profile.html', name=current_user.name)
+
 #----------------------------------------------
-# @author: Reena Deshmukh <cs16b029@iittp.ac.in>
-# @date: 12/02/2020
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
 #----------------------------------------------
 @main.route('/profile')
 @login_required
 def profile():
-    ''' Renders the profile window after user clicks 'profile'
-        or when user log in
+    ''' Generating profile page based on user data
     '''
     from .pending_jobs import generate_template
     if(generate_template(current_user.name, os.getcwd()+ '/' + __name__.replace(".main","")+"/templates/profile.html")):
@@ -84,9 +122,15 @@ def profile():
         return render_template('no_job.html', name=current_user.name)
 
 
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/complete',methods = ['GET'])
 @login_required
 def done():
+    ''' Marking annotation job as complete
+    '''
     doc_name = request.args.get("image")
     user_email = current_user.name
     try:
@@ -105,11 +149,15 @@ def done():
     except Exception as e:
         print(e)
    
-
-#route to upload the code    
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/upload')
 @login_required
 def upload():
+    ''' Upload image bypassing route
+    '''   
     import os
     print(os.getcwd()+ '/' + __name__.replace(".main","")+"/Images/docs_"+current_user.name)
     from .images_exist import check_if_images_exist
@@ -126,7 +174,6 @@ def upload():
 # @author: Vidya Rodge <cs16b023@iittp.ac.in>
 # @date: 27/04/2020
 #----------------------------------------------
-#route to annotate the image
 @main.route('/annotate')
 @login_required
 def annotate():
@@ -150,9 +197,16 @@ def annotate():
     image = request.args.get('image')
     return render_template('NewAnnotate.html', mimetype="text/html",collection=collection,mode=mode,folder=folder_name,image_name=image,user_id=current_user.name)
 
+
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/get_existing_models',methods = ['POST','GET'])
 @login_required
 def get_existing_models():
+    ''' Fetching existing models of users
+    '''   
     if request.data:
         try:
             db = connection.get_database('models')
@@ -171,22 +225,14 @@ def get_existing_models():
 
 
 #----------------------------------------------
-# @author: Vidya Rodge <cs16b023@iittp.ac.in>
-# @date: 02/05/2020
+# @authors: Vidya Rodge <cs16b023@iittp.ac.in>, Vijay Chilaka <cs17b032@iittp.ac.in> 
+# @date: 02/05/2020, 22/01/2021
 #----------------------------------------------
 @main.route('/Images/<foldername>/<filename>', methods = ['GET'])
 @main.route('/Images/<foldername>/<filename>', methods = ['GET'])
 @login_required
 def updateImage(foldername, filename):
-    print("\n*****************\n")
-    print('main-check-image-path: \n')
-    final_image_path = MEDIA_FOLDER + "/" + foldername
-    if("@" in final_image_path):
-        final_image_path = final_image_path
-    print(final_image_path)
-    print("\n*****************\n")
-    return send_from_directory(final_image_path, filename, as_attachment=True)
-'''Sends requested image from directory.
+    '''Sends requested image from directory.
 
     Request Arguments:
         foldername: Folder name.
@@ -195,13 +241,31 @@ def updateImage(foldername, filename):
     Returns:
         Returns requested image retrieved from corresponding location.
     '''
+    print("\n*****************\n")
+    print('main-check-image-path: \n')
+    final_image_path = MEDIA_FOLDER + "/" + foldername
+    if("@" in final_image_path):
+        final_image_path = final_image_path
+    print(final_image_path)
+    print("\n*****************\n")
+    return send_from_directory(final_image_path, filename, as_attachment=True)
+
+
 #----------------------------------------------
-# @author: Vidya Rodge <cs16b023@iittp.ac.in>
-# @date: 02/05/2020
+# @author: Vidya Rodge <cs16b023@iittp.ac.in>, Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 02/05/2020, 22/01/2021
 #----------------------------------------------
 @main.route('/Annotations/<foldername>/<filename>', methods = ['GET'])
 @login_required
 def updateXMLforImg(foldername, filename):
+    '''Sends XML file of annotations.
+    This function takes image details as arguments and sends the corresponding XML file.
+    Request Arguments:
+        foldername: Folder name.
+        filename: Name of the image.
+    Returns:
+        Sends the XML file of annotations.
+    '''
     print("\n*****************\n")
     print('main-check-annotation-path: \n')
     final_image_path = "Annotations"+"/"+foldername
@@ -213,6 +277,11 @@ def updateXMLforImg(foldername, filename):
     print(path_anno)
     return send_from_directory(path_anno, filename, as_attachment=True, cache_timeout=0)
 
+    
+#----------------------------------------------
+# @author: Vidya Rodge <cs16b023@iittp.ac.in>
+# @date: 02/05/2020
+#----------------------------------------------
 @main.route('/AnnotationCache/<foldername>/<filename>', methods = ['GET'])
 @login_required
 def updateXMLTemplate(foldername, filename):
@@ -229,16 +298,28 @@ def updateXMLTemplate(foldername, filename):
     path_anno = path_anno
     return send_from_directory(path_anno, filename, as_attachment=True)
 
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/wait_loader')
 @login_required
 def wait_loader():
+    ''' Loading page redirect to render the annotation page
+    '''
     image = request.args.get('image')
     return redirect(url_for('main.annotate', collection='LabelMe'+current_user.name, mode='i', 
                             folder='docs_'+current_user.name, image=image,username=current_user.name))    
 
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/train', methods = ['POST','GET'])
 @login_required
 def trainMODEL():
+    ''' Building user-specific models. Sending request to model builing server. 
+    '''
     if request.data:
         doc = request.args.get('document')
         annotation = request.data.decode('utf-8')
@@ -262,9 +343,16 @@ def trainMODEL():
         else:
             print('Model cannot be built at this moment')
     return "false,-1"
+
+#----------------------------------------------
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 @main.route('/wdb_loader')
 @login_required
 def wdb_loader():
+    ''' Creating a loader that redirects page to model training page 
+    '''
     annotation = str(request.args.get('ann'))
     im = (request.args.get('im'))
     print('annotation: ',annotation)
@@ -296,8 +384,8 @@ def wdb_loader():
 
 
 #----------------------------------------------
-# @author: Vidya Rodge <cs16b023@iittp.ac.in>
-# @date: 03/05/2020
+# @authors: Vidya Rodge <cs16b023@iittp.ac.in>, Vijay Chilaka <cs17b008@iittp.ac.in>
+# @dates: 03/05/2020, 15/11/2020
 #----------------------------------------------
 @main.route('/static/perl/submit.cgi', methods = ['POST','GET'])
 @login_required
@@ -326,9 +414,17 @@ def writeToXML():
         print(resp)
         print(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;')
     return ""
+
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 15/05/2021
+#----------------------------------------------
 @main.route('/add/services/static/perl/submit.cgi/<service_url>', methods = ['POST','GET'])
 @login_required
 def writeToXMLAndAddService(service_url):
+    ''' Stores the annotations by annotation services (ex. tesseract) 
+    in database and renders same on the document. 
+    Also maps services used by users of this platform to url of the annotation service '''
     filepath = os.path.join(APP_ROOT, "static", "perl","submit.cgi")
     if request.data:
         print('inside loop')
@@ -353,7 +449,7 @@ def writeToXMLAndAddService(service_url):
         collection_name = "docs_"+ current_user.name + "/" + image_name + "/english"
         if("\n" in collection_name):
             collection_name = collection_name.replace("\n","")
-        print("teseeract: collection- ",collection_name)
+        print("tesseract: collection- ",collection_name)
         db = connection.get_database('test_database')
         collection = db["services_mapping"]
         for old_data in collection.find({"collection_name":"services_list"}).limit(1):
@@ -380,9 +476,14 @@ def writeToXMLAndAddService(service_url):
             collection.insert(data) 
             break
     return ""
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 15/05/2021
+#----------------------------------------------
 @main.route('/add/services/<image_name>/<service_url>', methods = ['POST','GET'])
 @login_required
 def addServices(image_name, service_url):
+    ''' Adds annotation services based on image name and service url '''
     collection_name = "docs_"+ current_user + "/" + image_name + "/english"
     db = connection.get_database('test_database')
     collection = db["services_mapping"]
@@ -411,10 +512,14 @@ def addServices(image_name, service_url):
     return "false"
 
 
-
+#----------------------------------------------
+# @author: Teja Dande <cs17b010@iittp.ac.in>
+# @date: 15/02/2021
+#----------------------------------------------
 @main.route('/annotate_reload')
 @login_required
 def reload_annotation():
+    ''' Renders annotations on reload '''
     model = request.args.get("model")
     visibility = request.args.get("visibility")
     display = request.args.get("display")
@@ -422,7 +527,7 @@ def reload_annotation():
     print(visibility)
     print(display)
     return render_template("NewAnnotate.html",mimetype="text/html", model=model, visibility=visibility, display="visible")
-    
+
 @main.route('/add',methods=['POST'])
 @login_required
 def get_value():
@@ -490,11 +595,9 @@ def fetch_image():
     return Response(xml_str, mimetype='text/xml')
 
 #----------------------------------------------
-# @author: Vidya Rodge <cs16b023@iittp.ac.in>
-# @date: 21/05/2020
+# @authors: Vidya Rodge <cs16b023@iittp.ac.in>, Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @dates: 21/05/2020, 05/12/2020
 #----------------------------------------------
-
-
 @main.route('/annotate/auto/model', methods=['GET'])
 @login_required
 def fetch_model_annotations():
@@ -519,19 +622,22 @@ def fetch_model_annotations():
         folder = request.args.get('folder')
         im_name = request.args.get('image')
         print(collection, mode, useremail, folder, im_name)
-        #sleep(2)
         url_server = "http://0.0.0.0:7001/predict/"+pool_name + "/" + useremail
         image_path = os.getcwd()+ '/' + __name__.replace(".main","")+"/Images/"+folder+"/"+im_name
         fin = open(image_path, 'rb')
         files = {'file': fin}
         try:
-            
             r = requests.post(url_server, files=files)
             print(r.text)
             return Response(r.text)
         finally:
             fin.close()
     return json.loads("{}")
+
+#----------------------------------------------
+# @author: Vidya Rodge <cs16b023@iittp.ac.in>
+# @date: 21/05/2020
+#---------------------------------------------- 
 @main.route('/annotate/auto/tesseract', methods=['GET'])
 @login_required
 def fetch_auto_annotations():
@@ -554,8 +660,6 @@ def fetch_auto_annotations():
     im_name = request.args.get('image')
     url_server = request.args.get('service')
     print(collection, mode, username, folder, im_name, url_server)
-
-    
     image_path = os.getcwd()+ '/' + __name__.replace(".main","")+"/Images/"+folder+"/"+im_name
     fin = open(image_path, 'rb')
     files = {'file': fin}
@@ -566,9 +670,14 @@ def fetch_auto_annotations():
     finally:
         fin.close()
 
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#---------------------------------------------- 
 @main.route('/pool_creation', methods=['POST'])
 @login_required
 def pool_creation():
+    ''' Pools models as per user requests '''
     pool_name = request.args.get('key')
     print('pool_name',pool_name)
     if(pool_name != ""):

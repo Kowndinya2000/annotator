@@ -1,15 +1,11 @@
 # ----------------------------------------------------------------------
 # This script contains URL mappings for auth routes of flask app
 #
-# @author: Reena Deshmukh <cs16b029@iittp.ac.in>
-# @date: 12/02/2020
+# @author: Reena Deshmukh <cs16b029@iittp.ac.in>,  Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 12/02/2020, 25/11/2020
 #
 #-----------------------------------------------------------------------
 
-#-----------------------------------------------------
-# @author: DANDE TEJA          <cs17b010@iittp.ac.in>
-# @date: 21/05/2021
-#-----------------------------------------------------
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, logout_user, login_required
 from pymongo import database

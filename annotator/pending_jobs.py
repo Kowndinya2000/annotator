@@ -1,8 +1,13 @@
+#----------------------------------------------
+# @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in>
+# @date: 22/01/2021
+#----------------------------------------------
 from pymongo import MongoClient
 from xml.dom import minidom
 import sys
 import os
 def generate_template(user_email,path):
+    ''' Generates user annotations job template based on information present in the database '''
     try:
         connection = MongoClient('localhost',27017)
         print("connected Succesfully!!!")
