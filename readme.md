@@ -39,6 +39,7 @@ pip install -r requirements.txt
 #### ```3.``` Type the following commands to create ```databases``` and ```collections``` needed:
 ````
 use test_database
+db.createCollection('services_mapping')
 use models
 db.createCollection('bounding_regions')
 db.createCollection('user_models')
