@@ -1,3 +1,10 @@
+# ----------------------------------------------------------------------
+# This script is used to setup an annotation service for english language
+# 
+# @author: Vijay Chilaka <cs17b008@iittp.ac.in>
+# @date: 15/05/2021
+
+#-----------------------------------------------------------------------
 import os
 from flask import Flask, request
 from werkzeug.utils import secure_filename
@@ -6,15 +13,24 @@ from plug import *
 
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['jpg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(root_directory,'model-building','annotation-service-images')
 def allowed_file(filename):
+    ''' Checking wether the file has extension of type 'jpg'.
+        Args:
+                  filename: Name of the file(image).
+        Returns:
+                  File name without extensions.
+    '''
     return filename[-3:].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/plug/tesseract', methods=['GET', 'POST'])
 def upload_file():
+    ''' Uploads the image into annoation-services-images
+        and returns the annotations(json string) received.
+    '''
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
