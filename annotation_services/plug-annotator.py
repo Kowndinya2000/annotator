@@ -28,7 +28,7 @@ def allowed_file(filename):
 
 @app.route('/plug/tesseract', methods=['GET', 'POST'])
 def upload_file():
-    ''' Uploads the image into annoation-services-images(/home/vijay/Desktop/anno-testing-master/)
+    ''' Uploads the image into annoation-services-images
         and returns the annotations(json string) received.
     '''
     if request.method == 'POST':
