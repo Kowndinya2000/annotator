@@ -1,0 +1,7 @@
+------------------------------------------------------------------------------------------------------
+author              : Vijay Chilaka <cs17b008@iittp.ac.in>
+date                : 
+sub-folder names    : The username provided by the platform user is taken as the sub-folder name.  
+description         : Each sub folder in this folder(user-data) represents a particular user and 
+                      contain all the models which are build by that particular user.   
+-------------------------------------------------------------------------------------------------------

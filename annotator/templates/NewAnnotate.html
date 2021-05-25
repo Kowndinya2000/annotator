@@ -1,0 +1,1485 @@
+<!--
+LabelMe is a WEB-based image annotation tool and a Matlab toolbox that allows researchers to label images and share the annotations with the rest of the community.
+Copyright (C) 2013  MIT, Computer Science and Artificial Intelligence Laboratory. Bryan Russell, Antonio Torralba, William T. Freeman
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<!-- ---------------------------------------------- -->
+<!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+<!-- @date: 12/01/2021 -->
+<!-- ---------------------------------------------- -->
+
+<head>
+  <title>Annotation page | Annotator</title>
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://kowndinya2000.github.io/header-logo.github.io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://kowndinya2000.github.io/header-logo.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://kowndinya2000.github.io/header-logo.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://kowndinya2000.github.io/header-logo.github.io/site.webmanifest">
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE,NO-STORE,MUST-REVALIDATE" />
+  <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <META HTTP-EQUIV="imagetoolbar" CONTENT="no" />
+  <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js?rnd=132"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js?rnd=132"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css?rnd=132"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cs17b008.github.io/btp-resources.github.io/login.css?rnd=132">
+  <script type="text/javascript" src="/static/scripts/jquery-1.9.1.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/jquery-ui.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/jquery-ui-intervals.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/example.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/browser.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/globals.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/io.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/plot.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/my_scripts.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/object_list.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/object_parts.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/bubble.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/image.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/file_info.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/annotation.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/canvas.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/handler.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/sign_in.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/startup.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/player.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/video.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/draw_event.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/edit_event.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/adjust_event.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/scribble.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/xml_accessors.js?rnd=132"></script>
+  <script type="text/javascript" src="/static/scripts/train.js?rnd=132"></script>
+  <style>
+    @import url("/static/css/styles.css?version=4");
+    @import url("/static/css/header.css?version=4");
+    @import url("/static/css/bubble.css?version=4");
+    @import url("/static/css/object_list.css?version=4");
+    @import url("/static/css/scribblemenu.css?version=4");
+    @import url("/static/css/jquery-ui.css?rnd=132");
+  </style>
+  <style>
+    input[type=text] {
+      border: none;
+      border-radius: 0.5rem;
+      background: #E6E6E6;
+      background: #F6F6F6;
+      color: black;
+      font-weight: bold;
+      padding: 0.2rem;
+      font-size: 1rem;
+      outline: none;
+      height: 2.5rem;
+      width: 15rem;
+      padding-left: 2rem;
+      margin: 1rem 0;
+      border: 3px solid #CADBF9;
+    }
+
+    textarea {
+      border: none;
+      border-radius: 3rem;
+      background: #E6E6E6;
+      background: #F6F6F6;
+      color: black;
+      font-weight: bold;
+      padding: 0.2rem;
+      font-size: 1rem;
+      outline: none;
+      height: 15rem;
+      width: 25rem;
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+
+    input[type=radio] {
+      border: none;
+      border-radius: 3rem;
+      background: #E6E6E6;
+      background: #F6F6F6;
+      color: blue !important;
+      font-weight: bold;
+      padding: 0.2rem;
+      font-size: 1rem;
+      outline: none;
+      height: 1.1rem;
+      width: 1.1rem;
+    }
+
+    input:focus {
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    textarea:focus {
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .sub {
+      border: none;
+      border-radius: 3rem;
+      background: #E6E6E6;
+      color: black;
+      font-weight: bold;
+      padding: 0.2rem;
+      font-size: 1rem;
+      outline: none;
+      height: 3rem;
+      padding-left: 2rem;
+      margin: 1rem 0;
+      width: auto;
+      width: 15rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      background: #413E66;
+      color: white;
+      cursor: pointer;
+    }
+
+    .sub:hover {
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    input[type=button] {
+      border: none;
+      border-radius: 3rem;
+      border-radius: 1rem;
+      font-weight: bold;
+      padding: 0.2rem;
+      font-size: 1rem;
+      outline: none;
+      /* height: 3rem; */
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      background: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type=button]:hover {
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .del_red {
+      background: crimson !important;
+    }
+
+    .done_green {
+      background: #02BB8C !important;
+      background: #1E61E2 !important;
+      background: #4457c0 !important;
+
+    }
+
+    .adjust_blue {
+      background: #9884FC !important;
+      margin-right: 1rem;
+    }
+
+    h3 {
+      font-weight: bold;
+    }
+
+    #donebtn {
+      width: auto !important;
+      padding: 0.2rem;
+    }
+
+    #info {
+      animation: blinkingText 1.8s infinite;
+    }
+
+    @keyframes blinkingText {
+      0% {
+        color: #000;
+      }
+
+      49% {
+        color: #000;
+      }
+
+      60% {
+        color: transparent;
+      }
+
+      99% {
+        color: transparent;
+      }
+
+      100% {
+        color: #000;
+      }
+    }
+
+    .loader {
+      border: 5px solid #f3f3f3;
+      border: 5px solid #c1c1c1;
+      border-radius: 50%;
+      border-top: 10px solid #1A63E7;
+      width: 60px;
+      height: 60px;
+      right: 30%;
+      position: absolute;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <style>
+    ::-webkit-scrollbar {
+      width: 12px;
+      ;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #333;
+      border-radius: 20px;
+      border: 3px solid white;
+    }
+  </style>
+</head>
+
+<!-- Start up LabelMe after HTML elements load -->
+
+<body id="body" style="visibility:hidden;min-height: 200rem !important;overflow: unset !important;background: #F2F5F7;"
+  onload="javascript:StartupLabelMe();">
+
+  <a style="display: none;" id="train_model_loader"></a>
+  <a style="display: none;" id="re_train_model_loader"></a>
+  <div class="header" id="header" style="background: #fff;">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <p>
+          <a href="/login" class="btn btn-default navbar-btn" title="">Login</a>
+        </p>
+      </li>
+      {% if current_user.is_authenticated %}
+      <li><a href="/logout" title="">Logout</a></li>
+      {% endif %}
+      {% if not current_user.is_authenticated %}
+      <li><a href="/signup" title="">Sign Up</a></li>
+      {% endif %}
+    </ul>
+    <div id="username_main_div" style="margin-top: 2rem !important;height: 60px;top: 0px; bottom: 0;">
+      <a href="/connect" style="text-decoration: none;color: #fff;border: 1.5px solid #fff;padding: 1rem;">
+        Profile
+      </a>
+      <a href="/logout"
+        style="text-decoration: none;color: #fff;border: 1.5px solid #fff;padding: 1rem;margin-left: 1rem;">
+        Logout
+      </a>
+      <div id="display_user" style="display:block;margin-top: 2rem;">
+        You are:
+        <b><span id="usernametxt" type="text" style="max-width:120px; height:1.2em;" tabindex="0"
+            title="This username will get associated to each new polygon inside the XML.">anonymous
+          </span></b>
+      </div>
+      <div id="enterUserName" style="display:none;">
+        Enter name:
+        <input id="userEnter" type="text" style="width:120px;" tabindex="0" value=""
+          title="Enter the object\'s name here. Avoid application specific names, codes, long descriptions. Use a name you think other people would agree in using." />
+      </div>
+    </div>
+  </div>
+  <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/wave-header.svg" alt=""
+    style="position: absolute;top: 0rem;width: 100%;transform: rotate(0deg);">
+  <a style="width: 7.644rem;height: 5.508rem;position: absolute;top: 0.7rem;left: 1rem;" href="/home">
+    <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/logo-5.png"
+      style="width: 7.644rem;height: 5.508rem;" alt="">
+  </a>
+
+  <!-- BUTTONS -->
+  <div id="tool_buttons">
+    <!-- NAVIGATION BUTTONS  -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js?rnd=132"></script>
+    <div id="label_buttons_navigation" style="margin-top: 1rem;">
+      <!-- DOWNLOAD XML BUTTON -->
+      <button id="xml_url" class="labelBtn" type="button" title="Download XML file" style="border-radius: 0rem;">
+        <span class="iconify" data-icon="ic-round-arrow-circle-down" data-inline="false" width=28 height="30"></span>
+
+      </button>
+
+      <!-- NEXT IMAGE BUTTON -->
+      <button id="nextImage" class="labelBtn" type="button" title="Next Image">
+        <span class="iconify" data-icon="ic:baseline-double-arrow" data-inline="false" width=28 height="30"></span>
+      </button>
+    </div>
+
+    <!-- ADJUSTING BUTTONS-->
+    <div id="label_buttons_adjust" style="margin-top: 1rem;">
+      <!-- ZOOM IN BUTTON -->
+      <button id="zoomin" class="labelBtn" type="button" title="Zoom In">
+        <span class="iconify" data-icon="ic-baseline-zoom-in" data-inline="false" width="28" height="30"></span>
+      </button>
+      <!-- ZOOM OUT BUTTON -->
+      <button id="zoomout" class="labelBtn" type="button" title="Zoom Out">
+        <span class="iconify" data-icon="ic-baseline-zoom-out" data-inline="false" width="28" height="30"></span>
+      </button>
+      <!-- FIT IMAGE BUTTON -->
+      <button id="fit" class="labelBtn" type="button" title="Fit Image">
+        <span class="iconify" data-icon="ic-baseline-aspect-ratio" data-inline="false" width="28" height="30"></span>
+      </button>
+    </div>
+
+    <!-- DRAWING BUTTONS -->
+    <div id="label_buttons_drawing">
+    </div>
+  </div>
+
+  <!-- IMAGE CANVAS -->
+  <div class="image_canvas" id="main_section" style="margin-top: 9rem;">
+    <div id="loading">Loading image...</div>
+    <div id="main_media" class="top" style="visibility:hidden; overflow:auto;">
+      <canvas id="imcanvas" style="vertical-align:bottom;z-index:-3;">
+      </canvas>
+
+      <div id="myCanvas_bg_div"
+        style="position:absolute;left:0px;top:0px;z-index:0;cursor:crosshair;width:100%;height:100%;background-color:rgba(128,64,0,0);">
+        <svg id="myCanvas_bg" width="100%" height="100%" style="position:absolute;left:0px;top:0px;z-index:0;"></svg>
+      </div>
+
+      <div id="select_canvas_div"
+        style="position:absolute;left:0px;top:0px;z-index:-2;cursor:default;width:100%;height:100%;background-color:rgba(128,64,0,0);">
+        <svg id="select_canvas" width="100%" height="100%" style="position:absolute;left:0px;top:0px;z-index:-2;"></svg>
+      </div>
+
+      <div id="draw_canvas_div"
+        style="position:absolute;left:0px;top:0px;z-index:-2;cursor:crosshair;width:100%;height:100%;background-color:rgba(128,64,0,0);">
+        <svg id="draw_canvas" width="100%" height="100%" style="position:absolute;left:0px;top:0px;z-index:-2;"></svg>
+      </div>
+
+      <div id="query_canvas_div"
+        style="position:absolute;left:0px;top:0px;z-index:-2;cursor:default;width:100%;height:100%;background-color:rgba(128,64,0,0);">
+        <svg id="query_canvas" width="100%" height="100%" style="position:absolute;left:0px;top:0px;z-index:-2;"></svg>
+      </div>
+    </div>
+  </div>
+  <!-- ---------------------------------------------- -->
+  <!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+  <!-- @date: 22/01/2021 -->
+  <!-- ---------------------------------------------- -->
+  <style>
+    .button2 {
+      min-width: 300px;
+      min-height: 60px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      color: #313133;
+      background: #4FD1C5;
+      background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+      border: none;
+      border-radius: 1000px;
+      box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+      transition: all 0.3s ease-in-out 0s;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      padding: 10px;
+    }
+
+    .button2::before {
+      content: '';
+      border-radius: 1000px;
+      min-width: calc(300px + 12px);
+      min-height: calc(60px + 12px);
+      border: 6px solid #00FFCB;
+      box-shadow: 0 0 60px rgba(0, 255, 203, .64);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all .3s ease-in-out 0s;
+    }
+
+    .button2:hover,
+    .button2:focus {
+      color: #313133;
+      transform: translateY(-6px);
+    }
+
+    .button2:hover::before,
+    .button2:focus::before {
+      opacity: 1;
+    }
+
+    .button2::after {
+      content: '';
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      border: 6px solid #00FFCB;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ring 1.5s infinite;
+    }
+
+    .button2:hover::after,
+    .button2:focus::after {
+      animation: none;
+      display: none;
+    }
+
+    @keyframes ring {
+      0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+      }
+
+      100% {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+      }
+    }
+  </style>
+
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.1/tailwind.min.css'>
+
+  <div style="position:absolute;top: 48rem;width: 98%;height: 150rem;">
+    <h4 style="display: none;" id="response_message"></h4>
+
+
+    <body class="antialiased bg-gray-200 font-sans">
+
+      <link rel="stylesheet" href="/static/css/toast.css?rnd=132">
+      <style>
+        #notification_panel::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        #notification_panel::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        #notification_panel::-webkit-scrollbar-thumb {
+          background-color: #434190;
+          border-radius: 20px;
+          border: 3px solid white;
+        }
+      </style>
+      <div
+        style="height: 35vh;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;overflow: scroll;margin-left: 2rem;margin-right: 2rem;"
+        id="notification_panel">
+        <div class="toast-area" id="toasts">
+          <div style="display: none">
+            <div class="toast" id="clonemother" style="background: #fff;">
+              <div class="toast-content">
+                <div class="before"></div>
+                <div class="icon">&#128338;
+                </div>
+                <div class="text">
+                  <p>Building the model in 60 seconds</p>
+                  <p class="message" id="msg">In the best case it takes 20 seconds to build a new model.</p>
+                </div>
+                <div onclick="deletethis()" class="close2" style="justify-content:right;">&#x00D7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toast-area" id="toasts_red">
+          <div style="display: none">
+            <div class="toast" id="clone_red" style="background: #fff;">
+              <div class="toast-content">
+                <div class="before" style="background: red;"></div>
+                <!-- &#x2713; -->
+                <div class="icon" style="color: red;">!
+                </div>
+                <div class="text">
+                  <p>Model Building Timed Out!</p>
+                  <p class="message" id="failed_msg">Model was not built in time! Try again.</p>
+                </div>
+                <div onclick="deletethis()" class="close2">&#x00D7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toast-area" id="toasts_success">
+          <div style="display: none">
+            <div class="toast" id="clone_success" style="background: #fff;">
+              <div class="toast-content">
+                <div class="before" style="background: green;"></div>
+                <div class="icon" style="color: green;">&#x2713;
+                </div>
+                <div class="text">
+                  <p>Model Training was Successful!</p>
+                  <p class="message" id="success_msg">Now you can auto-annotate with new model.</p>
+                </div>
+                <div onclick="deletethis()" class="close2">&#x00D7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button" style="display: none;"><button id="show_toast">Show toast</button></div>
+      </div>
+
+      <script src="/static/scripts/toast.js?rnd=132"></script>
+      <div class="flex justify-center min-h-screen" style="margin-top: 3rem;padding-top: 0rem;">
+        <div class="max-w-md md:max-w-2xl px-2">
+          <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+            <div class="bg-cover bg-bottom h-56 md:h-auto md:w-56">
+              <link rel="stylesheet" href="/static/css/build_model_progress.css?rnd=132">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" style="display: none;">
+                <symbol id="wave">
+                  <path
+                    d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z">
+                  </path>
+                  <path
+                    d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z">
+                  </path>
+                  <path
+                    d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z">
+                  </path>
+                  <path
+                    d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z">
+                  </path>
+                </symbol>
+              </svg>
+              <div class="box" style="top: 16%;left: 28%;">
+                <div class="percent" style="border: #F2F5F7;">
+                  <div class="percentNum" id="progress_count2" style="color: #3C366B;">0</div>
+                  <div class="percentB" style="color:wheat;">%</div>
+                </div>
+                <div id="water" class="water">
+                  <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
+                    <use xlink:href="#wave"></use>
+                  </svg>
+                  <svg viewBox="0 0 560 20" class="water_wave water_wave_front">
+                    <use xlink:href="#wave"></use>
+                  </svg>
+                </div>
+              </div>
+              <script type="text/javascript" src="/static/scripts/build_model_progress.js?rnd=132"></script>
+            </div>
+            <div>
+              <style>
+                .blink {
+                  animation: blink 1s steps(1, end) infinite;
+                }
+
+                @keyframes blink {
+                  0% {
+                    opacity: 1;
+                  }
+
+                  50% {
+                    opacity: 0;
+                  }
+
+                  100% {
+                    opacity: 1;
+                  }
+                }
+              </style>
+              <div class="p-2 md:p-6">
+                <p class="font-bold text-xl md:text-2xl">Build Your Model Here
+                </p>
+              </div>
+              <div class="p-4 md:p-5 bg-gray-100">
+                <div class="sm:flex sm:justify-between sm:items-center">
+                  <input type="text" id="annotation_text" name="annotation_text"
+                    style="border: none;background: #D2DCF6;margin-right: 1rem;height: 2.5rem;border-radius: 0.5rem;padding: 0.5rem;color:black;background: #434190;color: white;background: #4A5568;"
+                    placeholder="Type Annotation here">
+                  <button
+                    class="mt-3 sm:mt-0 py-2 px-4 md:py-3 md:px-8 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md"
+                    style="background: #D2DCF6;color: #434190 !important;width: 12rem;height: 2.5rem;margin-bottom: 1rem;"
+                    onclick="javascript:build_model()">
+                    Build Model
+                    <div class="loader_done" style="display: none;" id="build_model_button"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+  </div>
+  <!-- ---------------------------------------------- -->
+  <!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+  <!-- @date: 05/02/2021 -->
+  <!-- ---------------------------------------------- -->
+  <div
+    style="background: #fff;box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);border-radius: 0.5rem;margin-left: 1.5rem;margin-right: 1.5rem;min-height: 100vh;margin-top: 80rem;">
+    <div style="vertical-align: middle;text-align: center;padding-left: 4rem;padding-top: 3rem;left: 30%;">
+      <ion-icon name="refresh" onclick="updateModelInfo()"
+        style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);background: #FC6681;padding: 0.8rem;border-radius: 0.3rem;color: #fff;font-size: 1.5rem;font-weight: bolder;margin-left: 2rem;margin-right: 0.8rem;cursor: pointer;">
+      </ion-icon>
+      <p style="color:#000;font-weight: bolder;font-family: Verdana, Geneva, Tahoma, sans-serif;margin-top: 0.5rem;">*
+        Refresh this area to view the changes (after building a model)</p>
+    </div>
+
+    <div style="display: flex;flex-direction:row;background: #fff;margin-top: 3rem;padding-bottom: 3rem;">
+      <div style="flex: 42;overflow: hidden;padding: auto;margin:auto;margin-left: 2rem;">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css?rnd=132">
+        <link rel="stylesheet" href="/static/css/model-pool-auto-annotation.css?rnd=132">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js?rnd=132"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/inter-ui@3.11.0/inter.min.css'>
+        <link rel="stylesheet" href="/static/css/auto_anno_button.css?rnd=132">
+        <script type="text/javascript" src="/static/scripts/jquery-1.9.1.js?rnd=132"></script>
+        <script type="text/javascript" src="/static/scripts/jquery-ui.js?rnd=132"></script>
+        <script type="text/javascript" src="/static/scripts/jquery-ui-intervals.js?rnd=132"></script>
+        <script type="text/javascript" src="/static/scripts/object_list.js?rnd=132"></script>
+        <style>
+          @import url("/static/css/jquery-ui.css?rnd=132");
+        </style>
+        <script>
+          function updateModelInfo() {
+            models_r_selected_by_user = ""
+            pools = []
+            models = []
+            no_of_layers = 0
+            models_r = []
+            pools_r = []
+            no_of_layers_r = 0
+            intrsction = false
+            union = false
+            try {
+              // Do nothing
+            }
+            catch (err) {
+              console.log('err: updating model pool area: ', err)
+            }
+            initialize_models()
+          }
+        </script>
+        <script>
+          var models_r_selected_by_user = ""
+          var pools = []
+          var models = []
+          var no_of_layers = 0
+          var models_r = []
+          var pools_r = []
+          var no_of_layers_r = 0
+          var intrsction = false
+          var union = false
+          function initialize_models() {
+            $.ajax({
+              type: "POST",
+              url: "/doanno",
+              data: 'a',
+              contentType: "text/xml",
+              dataType: "text",
+              success: function func(mongodbString) {
+                document.getElementById('model_pool_div').innerHTML = `<div style="background: #F4F0FB;margin: 0;">
+                                <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Individual Models</p> 
+                                 <hr style="width: 100%;height: 1rem;background: #592F66;">
+                               </div>`
+                if (mongodbString == "False") {
+                  // Fetching Details Failed
+                  return;
+                }
+                var mongodbDoc = JSON.parse(mongodbString)
+                console.log(mongodbDoc)
+                console.log(typeof (mongodbDoc))
+                console.log(mongodbDoc["Pool_Closure"])
+                if (mongodbDoc["Pool_Closure"] == "") {
+                  // NO Models Yet!
+                  document.getElementById('model_pool_div').innerHTML += `Model Pools Do not exist</br></br><div style="background: #F4F0FB;margin: 0;">
+                                                                                                  <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Pooled Models</p> 
+                                                                                                  <hr style="width: 100%;height: 1rem;background: #592F66;">
+                                                                                                  </div> Model Pools Do not exist`
+                }
+                else {
+                  var fetch_all_keys = Object.keys(mongodbDoc)
+                  if (fetch_all_keys.length == 1 && fetch_all_keys[0] == "Pool_Closure") {
+                    // No Model Pools yet
+                    if (!mongodbDoc["Pool_Closure"].includes(",")) {
+                      models = []
+                      models.push(mongodbDoc["Pool_Closure"])
+                    }
+                    else {
+                      models = mongodbDoc["Pool_Closure"].split(",")
+                    }
+                    // models = mongodbDoc["Pool_Closure"].split(",")
+                    console.log('Received from MongoDB Server - Individual Models: ' + models)
+                    no_of_layers = 0
+                    setTimeout(() => {
+                      models.sort()
+                      // console.log(models)
+                      for (var i = 0; i < models.length; i++) {
+                        if (i % 3 == 0 && i > 2) {
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + models[i] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ models[i] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ models[i] + `</span></label></br></br>`
+
+                        }
+                        else {
+                          no_of_layers++;
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + models[i] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ models[i] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ models[i] + `</span></label>&nbsp;&nbsp;&nbsp;`
+                        }
+                      }
+                      document.getElementById('model_pool_div').innerHTML += `</br></br><div style="background: #F4F0FB;margin: 0;">
+                                                                                                  <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Pooled Models</p> 
+                                                                                                  <hr style="width: 100%;height: 1rem;background: #592F66;">
+                                                                                                  </div> Model Pools Do not exist`
+
+                    }, 600);
+
+                  }
+                  else if (fetch_all_keys.length > 1) {
+                    models = mongodbDoc["Pool_Closure"].split(",")
+                    // Individual and Model Pools Exist
+                    no_of_layers = 0
+                    setTimeout(() => {
+                      models.sort()
+                      // console.log(models)
+                      for (var i = 0; i < models.length; i++) {
+                        if (i % 3 == 0 && i > 2) {
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + models[i] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ models[i] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ models[i] + `</span></label></br></br>`
+
+                        }
+                        else {
+                          no_of_layers++;
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + models[i] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ models[i] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ models[i] + `</span></label>&nbsp;&nbsp;&nbsp;`
+                        }
+                      }
+
+                      pools = mongodbDoc
+                      var sortedPoolArray = [];
+                      for (var i in pools) {
+                        if (i == "Pool_Closure") {
+                          continue
+                        }
+                        else {
+                          sortedPoolArray.push([i, pools[i]]);
+                        }
+                      }
+                      sortedPoolArray.sort()
+                      document.getElementById('model_pool_div').innerHTML += `</br></br><div style="background: #F4F0FB;margin: 0;">
+                                        <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Pooled Models</p> 
+                                         <hr style="width: 100%;height: 1rem;background: #592F66;">
+                                       </div>`
+                      for (var i = 0; i < sortedPoolArray.length; i++) {
+                        if (i % 3 == 0 && i > 2) {
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + sortedPoolArray[i][0] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ sortedPoolArray[i][0] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ sortedPoolArray[i][0] + `</span></label></br></br>`
+
+                        }
+                        else {
+                          document.getElementById('model_pool_div').innerHTML += `<input class="inp-cbx" id="model_` + sortedPoolArray[i][0] + `" type="checkbox" style="display: none;"/>
+                                                                                                      <label class="cbx" for="model_`+ sortedPoolArray[i][0] + `"><span>
+                                                                                                      <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                                      </svg></span><span>`+ sortedPoolArray[i][0] + `</span></label>&nbsp;&nbsp;&nbsp;`
+                        }
+                      }
+                    }, 600);
+
+                  }
+                }
+
+
+                setTimeout(() => {
+                  models_r = models
+                  pools_r = pools
+                  models_r.sort()
+                  document.getElementById('model_pool_div_r').innerHTML = `<div style="background: #F4F0FB;margin: 0;">
+                              <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Individual Models</p> 
+                               <hr style="width: 100%;height: 1rem;background: #592F66;">
+                             </div>`
+                  for (var i = 0; i < models_r.length; i++) {
+                    if (i % 3 == 0 && i > 2) {
+                      document.getElementById('model_pool_div_r').innerHTML += `<input class="inp-cbx" id="rmodel_` + models_r[i] + `" type="checkbox" style="display: none;"/>
+                                                                                            <label class="cbx" for="rmodel_`+ models_r[i] + `"><span>
+                                                                                            <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                              <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                            </svg></span><span>`+ models_r[i] + `</span></label></br></br>`
+
+                    }
+                    else {
+                      no_of_layers_r++;
+                      document.getElementById('model_pool_div_r').innerHTML += `<input class="inp-cbx" id="rmodel_` + models_r[i] + `" type="checkbox" style="display: none;"/>
+                                                                                            <label class="cbx" for="rmodel_`+ models_r[i] + `"><span>
+                                                                                            <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                              <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                            </svg></span><span>`+ models_r[i] + `</span></label>&nbsp;&nbsp;&nbsp;`
+                    }
+                  }
+                  var sortedPoolArray_r = [];
+                  for (var i in pools_r) {
+                    sortedPoolArray_r.push([i, pools_r[i]]);
+                  }
+                  sortedPoolArray_r.sort()
+                  document.getElementById('model_pool_div_r').innerHTML += `</br></br><div style="background: #F4F0FB;margin: 0;">
+                              <p style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">Pooled Models</p> 
+                               <hr style="width: 100%;height: 1rem;background: #592F66;">
+                             </div>`
+                  for (var i = 0; i < sortedPoolArray_r.length; i++) {
+                    if (i % 2 == 1) {
+                      var temp_arr_r = pools_r[sortedPoolArray_r[i][0]].split(",")
+                      var tmp_str_r = `<br><span style="color: #434190;color: #E9E9F0;font-weight: bold;margin-right: 0.5rem;margin-top: 1rem;text-align: center;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;">>>&nbsp;`
+                      for (var y = 0; y < temp_arr_r.length; y++) {
+                        if (y % 3 == 0 && y > 2) {
+                          tmp_str_r += temp_arr_r[y] + "&nbsp;" + "</br>"
+                        }
+                        else {
+                          tmp_str_r += temp_arr_r[y] + "&nbsp;"
+                        }
+
+                      }
+                      tmp_str_r += "</span>"
+                      var full_str_r = ""
+                      full_str_r += `<section style="background: #D2DCF6;background: #CAE2FA;background: #011742;padding: 1rem;border-radius: 0.5rem;max-width: 12rem;display: inline-block;margin-left: 2rem;margin-bottom: 1rem">
+                                                                                    <input class="inp-cbx" id="rmodel_`+ sortedPoolArray_r[i][0] + `" type="checkbox" style="display: none;"/>
+                                                                                    <label class="cbx" for="rmodel_`+ sortedPoolArray_r[i][0] + `"><span>
+                                                                                        <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                          <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                        </svg></span><span style="color: #fff;">&nbsp;`+ sortedPoolArray_r[i][0] + `</span>`;
+                      full_str_r += tmp_str_r + `</label></section></br></br>`
+                      document.getElementById('model_pool_div_r').innerHTML += full_str_r
+
+                    }
+                    else {
+                      var temp_arr_r = pools_r[sortedPoolArray_r[i][0]].split(",")
+                      var tmp_str_r = `<br><span style="color: #434190;color: #E9E9F0;font-weight: bold;margin-top: 1rem;padding-right: 0.5rem;text-align: center;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;">>>&nbsp;`
+                      for (var y = 0; y < temp_arr_r.length; y++) {
+                        if (y % 2 == 0 && y > 1) {
+                          tmp_str_r += temp_arr_r[y] + "&nbsp;" + "</br></br>"
+                        }
+                        else {
+                          tmp_str_r += temp_arr_r[y] + "&nbsp;"
+                        }
+
+                      }
+                      tmp_str_r += "</span>"
+                      var full_str_r = ""
+                      full_str_r += `<section style="background: #D2DCF6;background: #CAE2FA;background: #011742;padding: 1rem;border-radius: 0.5rem;max-width: 12rem;display: inline-block;margin-left: 2rem;margin-bottom: 1rem">
+                                                                                    <input class="inp-cbx" id="rmodel_`+ sortedPoolArray_r[i][0] + `" type="checkbox" style="display: none;"/>
+                                                                                    <label class="cbx" for="rmodel_`+ sortedPoolArray_r[i][0] + `"><span>
+                                                                                        <svg width="12px" height="9px" viewbox="0 0 12 9">
+                                                                                          <polyline points="1 5 4 8 11 1"></polyline>
+                                                                                        </svg></span><span style="color: #fff;">&nbsp;`+ sortedPoolArray_r[i][0] + `</span>`;
+                      var temp_arr_r = pools_r[sortedPoolArray_r[i][0]].split(",")
+
+
+
+                      full_str_r += tmp_str_r + `</label></section>`
+                      document.getElementById('model_pool_div_r').innerHTML += full_str_r
+                    }
+                  }
+                }, 2000);
+
+                return;
+
+
+              },
+              error: function (xhr, ajaxOptions, thrownError) {
+                console.log('Failed to execute train model')
+                console.log(xhr.status);
+                console.log(thrownError);
+              }
+            });
+          }
+          initialize_models()
+        </script>
+        <!-- ---------------------------------------------- -->
+        <!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+        <!-- @date: 15/02/2021 -->
+        <!-- ---------------------------------------------- -->
+        <div
+          style="height: fit-content;padding-bottom: 2rem;display: flex;font-family: 'Open Sans', sans-serif;font-size: 16px;color: #00104B;overflow: hidden;">
+          <div style="width: 30rem;">
+            <iframe
+              src="https://annotator-web-resources.github.io/tool-resources.github.io/fade-in-text/auto_annotation.html"
+              frameborder="0"
+              style="border-radius: 0.5rem;width: 30rem;height: 10rem;margin-left: auto;margin-right: auto;"></iframe>
+            <div id="model_pool_div"
+              style="background: #fff;border-radius: 0.5rem;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);transition: 0.3s;padding: 1rem;">
+              <div style="background: #F4F0FB;margin: 0;">
+                <p
+                  style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">
+                  Individual Models</p>
+                <hr style="width: 100%;height: 1rem;background: #592F66;">
+              </div>
+            </div>
+
+          </div>
+
+          <button class="continue-application" onclick="javascript:ShowModelAnnotations(get_model_names())"
+            id="submit_auto" style="position: absolute;margin-top: -2rem;">
+            <div>
+              <div class="pencil"></div>
+              <div class="folder">
+                <div class="top">
+                  <svg viewBox="0 0 24 27">
+                    <path
+                      d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="paper"></div>
+              </div>
+
+            </div>
+            Auto Annotate
+          </button>
+
+          <iframe id="auto_annotating" src="https://kowndinya2000.github.io/auto-annotate-loading-animation.github.io/"
+            frameborder="0"
+            style="width: 6rem;height: 5rem;position: absolute;margin-top: 10rem;left: 25%;display: none;"></iframe>
+          <iframe id="scroll_up_done"
+            src="https://annotator-web-resources.github.io/tool-resources.github.io/auto-annotation-scroll-up-anim/index.html"
+            frameborder="0"
+            style="width: 20rem;height: 20rem;position: absolute;margin-top: 14rem;left: 25%;display: none;"></iframe>
+
+          <script>
+            function get_model_names() {
+              var models_selected_by_user = ""
+              // Accumulating individual models
+              for (var i = 0; i < models.length; i++) {
+                var is_model_checked = document.getElementById('model_' + models[i]).checked
+                if (is_model_checked) {
+                  models_selected_by_user += models[i] + ","
+                }
+
+              }
+              var sortedPoolArray = [];
+              for (var i in pools) {
+                if (i == "Pool_Closure") {
+                  continue
+                }
+                else {
+                  sortedPoolArray.push([i, pools[i]]);
+                }
+              }
+              sortedPoolArray.sort()
+              for (var i = 0; i < sortedPoolArray.length; i++) {
+                console.log('checking:..' + 'model_' + sortedPoolArray[i][0])
+                var is_model_checked = document.getElementById('model_' + sortedPoolArray[i][0]).checked
+                if (is_model_checked) {
+                  console.log('sidncdncn;' + pools[sortedPoolArray[i][0]])
+                  models_selected_by_user += pools[sortedPoolArray[i][0]] + ","
+                }
+
+              }
+              if (models_selected_by_user == "") {
+                console.log('User did not select any models yet!')
+              }
+              else {
+                var selected_array = new Set(models_selected_by_user.split(","))
+                try {
+                  selected_array.delete("")
+                }
+                catch (err) {
+                  console.log(err.message)
+                }
+                var models_finally_selected = Array.from(selected_array).join(',')
+                console.log('Finally Selected: ', models_finally_selected, typeof (models_finally_selected))
+                console.log("Models selected: ", models_finally_selected)
+                return models_finally_selected
+
+              }
+
+
+
+            }
+          </script>
+        </div>
+
+
+
+      </div>
+
+      <link rel="stylesheet" href="/static/css/model-pool-selection.css?rnd=132">
+      <div style="flex: 58;padding: auto;margin:auto;margin-left: 2rem">
+
+        <div style="width: 30rem;">
+          <iframe
+            src="https://annotator-web-resources.github.io/tool-resources.github.io/fade-in-text/model_pooling.html"
+            frameborder="0"
+            style="border-radius: 0.5rem;width: 30rem;height: 10rem;margin-left: auto;margin-right: auto;"></iframe>
+          <div id="model_pool_div_r"
+            style="background: #fff;border-radius: 0.5rem;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);transition: 0.3s;padding: 1rem;">
+            <div style="background: #F4F0FB;margin: 0;">
+              <p
+                style="background: #F4F0FB;padding-left: 2rem;padding-right: 2rem;padding-top: 1rem;padding-bottom: 1rem;text-align: center;">
+                Individual Models</p>
+              <hr style="width: 100%;height: 1rem;background: #592F66;">
+            </div>
+          </div>
+          <script>
+
+          </script>
+        </div>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet'
+          href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+        <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
+        <link rel="stylesheet" href="/static/css/collection-add-intersect.css?rnd=132">
+        <div class="container5" id="pool_auto" style="margin-top: -28rem;margin-left: 30rem;">
+          <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;">POOL NAME</h2>
+          <br>
+          <input type="text" name="pool_name" placeholder="Enter pool name" id="pool_name"
+            style="border-radius: 1rem;padding: 1rem 1rem;outline: none;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);border: none;margin-bottom: 1rem;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;border: 2px solid #4A5568"
+            required>
+          <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;">POOL FUSION</h2>
+          <br>
+          <button class="buttn" id="button1" style="outline: none;"></button>
+          <br>
+          <br>
+          <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;">POOL INTERSECTION
+          </h2>
+          <br>
+          <button class="buttn" id="button2" style="outline: none;"></button>
+        </div>
+        <p id="model_auto_final1" style="display: none;"></p>
+        <p id="model_auto_final2" style="display: none;"></p>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+        <script>
+          $(function () {
+            $("#button1").click(function () {
+              $("#button1").addClass("onclic", 250, validate1);
+            });
+
+            function validate1() {
+              union = false
+              models_r_selected_by_user = ""
+              for (var i = 0; i < models_r.length; i++) {
+                var is_model_checked_r = document.getElementById('rmodel_' + models_r[i]).checked
+                if (is_model_checked_r) {
+                  models_r_selected_by_user += models_r[i] + ","
+                }
+
+              }
+              var sortedPoolArray_r = [];
+              for (var i in pools_r) {
+                sortedPoolArray_r.push([i, pools_r[i]]);
+              }
+              sortedPoolArray_r.sort()
+              for (var i = 0; i < sortedPoolArray_r.length; i++) {
+                var is_model_checked_r = document.getElementById('rmodel_' + sortedPoolArray_r[i][0]).checked
+                if (is_model_checked_r) {
+                  models_r_selected_by_user += pools_r[sortedPoolArray_r[i][0]] + ","
+                }
+                console.log('rmodel_' + sortedPoolArray_r[i][0] + ": " + is_model_checked_r.toString())
+
+              }
+              console.log('sle:', models_r_selected_by_user)
+              if (models_r_selected_by_user != "" && document.getElementById('pool_name').value != "") {
+                if (models_r_selected_by_user.charAt(models_r_selected_by_user.length) == ',') {
+                  models_r_selected_by_user = models_r_selected_by_user.replace(",", "")
+                }
+                union = true
+              }
+              setTimeout(function () {
+                $("#button1").removeClass("onclic");
+                $("#button1").addClass("validate1", 450, callback1);
+              }, 2250);
+            }
+            function callback1() {
+              setTimeout(function () {
+                console.log("union: ", union)
+                if (union) {
+                  $.ajax({
+                    type: "POST",
+                    url: "/pool_creation?key=" + document.getElementById('pool_name').value + "&val=" + models_r_selected_by_user.toString(),
+                    data: 'a',
+                    contentType: "text/xml",
+                    dataType: "text",
+                    success: function () {
+                      $("#button1").removeClass("validate1");
+                      return;
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                      console.log('Failed to pool models')
+                      console.log(xhr.status);
+                      console.log(thrownError);
+                    }
+                  });
+
+                } else {
+                  $("#button1").removeClass("validate1");
+                }
+              }, 1250);
+            }
+          });
+
+
+
+          $(function () {
+            $("#button2").click(function () {
+
+              $("#button2").addClass("onclic", 250, validate);
+            });
+
+            function validate() {
+              intrsction = false
+              var models_r_selected_by_user2 = ""
+              var sortedPoolArray_r2 = [];
+              console.log('pools_r: ', pools_r)
+              for (var i in pools_r) {
+                sortedPoolArray_r2.push([i, pools_r[i]]);
+              }
+              sortedPoolArray_r2.sort()
+              var selected_ones_r = []
+              for (var i = 0; i < sortedPoolArray_r2.length; i++) {
+                console.log(typeof (document.getElementById('rmodel_' + sortedPoolArray_r2[i][0]).checked))
+                var is_model_checked_r = document.getElementById('rmodel_' + sortedPoolArray_r2[i][0]).checked
+                if (is_model_checked_r == true) {
+                  selected_ones_r.push(sortedPoolArray_r2[i])
+                }
+              }
+              console.log(selected_ones_r)
+              var final_set_r = ""
+              if (selected_ones_r.length < 2 && selected_ones_r.length == 1) {
+                final_set_r = selected_ones_r[0][1]
+              }
+              else if (selected_ones_r.length >= 2) {
+                console.log('sdcnjdncj: ', selected_ones_r[0][0])
+                var intersection_r = new Set(selected_ones_r[0][1].split(","))
+                for (var i = 1; i < selected_ones_r.length; i++) {
+                  var b = new Set(selected_ones_r[i][1].split(","))
+                  intersection_r = new Set([...intersection_r].filter(x => b.has(x)));
+                }
+                console.log('intersection_r: ' + intersection_r)
+                final_set_r = Array.from(intersection_r).join(',')
+              }
+
+              var Individual_count = 0
+              var appen_stri = ""
+              for (var i = 0; i < models_r.length; i++) {
+                var is_model_checked_r2 = document.getElementById('rmodel_' + models_r[i]).checked
+                if (is_model_checked_r2) {
+                  Individual_count += 1
+                  appen_stri += models_r[i] + ","
+                }
+              }
+              console.log('INidvidual count: ', Individual_count)
+              // console.log('pool count: ',pool_count)
+              if (Individual_count == 1) {
+                var check_bool = false
+                var check_arr = final_set_r.split(",")
+                for (var j = 0; j < check_arr.length; j++) {
+                  if (check_arr[j] + "," == appen_stri) {
+                    final_set_r = check_arr[j]
+                    check_bool = true
+                    break
+                  }
+                }
+                if (check_bool == false) {
+                  final_set_r = ""
+                }
+              } else if (Individual_count > 1) {
+                final_set_r = ""
+              }
+              if (final_set_r == "") {
+                console.log("No common models found or Models have not been selected or Select one model pool atleast!")
+              }
+              else {
+                document.getElementById('model_auto_final2').innerText = final_set_r
+                var name_pool = document.getElementById('pool_name').value
+                if (name_pool == "") {
+                  console.log('Please provide a name of the new model pool')
+                }
+                else {
+                  console.log('poo: ', pools_r)
+                  for (var h in pools_r) {
+                    console.log(h.toString())
+                    if (name_pool == h.toString()) {
+                      console.log('DO you want to update the existing pool?')
+                      break
+                    }
+                  }
+                  intrsction = true
+                  console.log('Nmae: ', name_pool)
+                }
+                console.log(final_set_r)
+              }
+
+
+
+              setTimeout(function () {
+                $("#button2").removeClass("onclic");
+                $("#button2").addClass("validate", 450, callback);
+              }, 2250);
+            }
+            function callback() {
+              setTimeout(function () {
+                if (intrsction) {
+                  $.ajax({
+                    type: "POST",
+                    url: "/pool_creation?key=" + document.getElementById('pool_name').value + "&val=" + document.getElementById('model_auto_final2').innerText,
+                    data: 'a',
+                    contentType: "text/xml",
+                    dataType: "text",
+                    success: function () {
+                      $("#button2").removeClass("validate");
+                      return;
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                      console.log('Failed to pool models')
+                      console.log(xhr.status);
+                      console.log(thrownError);
+                    }
+                  });
+
+                } else {
+                  $("#button2").removeClass("validate");
+                }
+
+              }, 1250);
+            }
+          });
+
+        </script>
+      </div>
+
+    </div>
+  </div>
+  <!-- ---------------------------------------------- -->
+  <!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+  <!-- @date: 15/05/2021 -->
+  <!-- ---------------------------------------------- -->
+  <div
+    style="background: #5F39DD;box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);border-radius: 0.5rem;margin-left: 1.5rem;margin-right: 1.5rem;min-height: 350vh;margin-top: 5rem;"
+    id="stopPos1">
+    <link rel="stylesheet" href="/static/css/services.css">
+    <div class="button" id="hideThis">
+      <button id="btnPopup" style="width: 30rem;"><span>Loading Annotation Services ....</span></button>
+    </div>
+
+    <div class="pop-up">
+      <div class="content">
+        <div class="container">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <span class="close">close</span>
+
+          <div class="title">
+            <h1 style="font-size: 1.5rem;">PLUG ANNOTATION SERVICES</h1>
+          </div>
+
+          <img src="/static/Icons/data-annotation-1080x1080-1-1024x1024.png" alt="">
+
+          <div class="subscribe">
+            <h1> <span style="color: #689BF6;">Plug</span> different annotation services <span>for your documents</span>
+            </h1>
+
+            <form action="">
+              <input type="url" placeholder="Service url" id="service_url" name="service_url"
+                style="display: block;margin-bottom: 2rem;border: 2px solid black;box-shadow: none;">
+              <br> <br>
+              <input type="button" value="Get Annotations" style="width: fit-content;display: block;text-align: center;"
+                onclick="requestAnnoServices()">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute;margin-top: 70rem;width: 97%;text-align: center;min-height: 97rem;overflow: hidden;">
+      <iframe src="https://annotator-web-resources.github.io/tool-resources.github.io/annotation-services/index.html"
+        frameborder="0" style="width: 100%;height: 95rem;display: none;overflow-y: hidden;scroll-behavior: smooth;
+      margin: auto;text-align: center;" scrolling="no" id="loading_anno_services"></iframe>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
+    </script>
+    <script>
+      $('button').click(function () {
+        $('.pop-up').addClass('open');
+      });
+
+      $('.pop-up .close').click(function () {
+        $('.pop-up').removeClass('open');
+      });
+    </script>
+    <a id="show_tess_button" href="javascript:ShowTesseractAnnotations();" style="display: none;">Auto annotate using
+      Tesseract</a>
+    <script>
+      // function setupPopup() {
+
+      setTimeout(function () {
+        document.getElementById("btnPopup").click()
+        document.getElementById("hideThis").style.visibility = "hidden"
+      }, 3500);
+      // }
+      function requestAnnoServices() {
+        var serviceURL = document.getElementById("service_url").value
+        console.log("serviceURL: ", serviceURL)
+        document.getElementById("show_tess_button").click()
+        // document.body.scrollBy = 1000;
+
+      }
+    </script>
+  </div>
+
+
+  <!-- DIV that will contain the object list -->
+  <div id="anno_anchor">
+  </div>
+  <script type="text/javascript" src="/static/scripts/check-box.js?rnd=132"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116571012-1');
+  </script>
+  <h3
+    style="display: none;position: absolute;left: 50%;top: 50%; bottom: 50%; right: 50%;color: red;font-weight: bolder;opacity: 1"
+    id="loading_text">
+    Storing into database! Please wait!
+  </h3>
+  <h4
+    style="position: absolute;right: 20%;bottom: 10rem;z-index: 1;display:none;color: #F48024;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: bolder;"
+    id="establishment">Established Remote connection</h4>
+  <div style="bottom: 6rem;z-index: 1;display:none;" class="loader" id="rotator"></div>
+  <h4
+    style="position: absolute;right:20%;bottom: 2rem;z-index: 1;display:none;color: #F48024;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: bolder;"
+    id="info">Storing into Database</h4>
+
+  <h4
+    style="position: absolute;top: 40rem;bottom: 10rem;z-index: 1;display:none;color: #F48024;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: bolder;"
+    id="anno_establishment">Established Remote connection</h4>
+  <div style="margin-top: 44rem;z-index: 1;display:none;" class="loader" id="anno_rotator"></div>
+  <h4
+    style="position: absolute;margin-top: 48rem;z-index: 1;display:none;color: #F48024;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: bolder;"
+    id="anno_info">Please wait while we annotate</h4>
+
+  <script>
+    var collection = "{{ collection }}"
+    var mode = "{{ mode }}"
+    var folder = "{{ folder }}"
+    var image_name = "{{ image_name }}"
+    var user_name = "{{ user_id }}"
+    console.log(collection, mode, folder, image_name, user_name)
+  </script>
+  <script>
+    function LoadAnnotations2(xml) {
+
+      console.time('load success');
+
+      // SET GLOBAL VARIABLE:
+      LM_xml = xml;
+      console.log('LMxml: ', LM_xml)
+      // Set AllAnnotations array:
+      SetAllAnnotationsArray();
+
+      console.time('attach main_canvas');
+      // Attach valid annotations to the main_canvas:
+      for (var pp = 0; pp < LMnumberOfObjects(LM_xml); pp++) {
+        var isDeleted = LMgetObjectField(LM_xml, pp, 'deleted');
+        if ((view_Existing && !isDeleted) || (isDeleted && view_Deleted)) {
+          // Attach to main_canvas:
+          main_canvas.AttachAnnotation(new annotation(pp));
+          if (!video_mode && LMgetObjectField(LM_xml, pp, 'x') == null) {
+            main_canvas.annotations[main_canvas.annotations.length - 1].SetType(1);
+            main_canvas.annotations[main_canvas.annotations.length - 1].scribble = new scribble(pp);
+          }
+        }
+      }
+      console.timeEnd('attach main_canvas');
+
+      console.time('RenderAnnotations()');
+      // Render the annotations:
+      main_canvas.RenderAnnotations();
+      console.timeEnd('RenderAnnotations()');
+
+      console.timeEnd('load success');
+
+      // Finish the startup scripts:
+      FinishStartup();
+
+
+    }
+    function readAnnotations() {
+      console.log("xml-file: ", "/Annotations/" + folder + "/" + image_name.replace(".jpg", ".xml"))
+      $.ajax({
+        type: "GET",
+        url: "/Annotations/" + folder + "/" + image_name.replace(".jpg", ".xml"),
+        dataType: "xml",
+        success: LoadAnnotations2,
+        error: function (xhr, ajaxOptions, thrownError) {
+          console.log(xhr.status);
+          console.log(thrownError);
+        }
+      });
+    }
+
+  </script>
+  <script>
+    try {
+      setTimeout(() => {
+        document.getElementById("segmDiv").style.display = "none"
+      }, 3000)
+    } catch (err) {
+      console.log('could not delete segmentDiv err:', err)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+@charset "UTF-8";
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.container5 {
+  position: absolute;
+  margin-left: 15rem;
+  margin-top: 85rem;
+  width: 180px;
+  height: 40px;
+  text-align: center;
+}
+
+.buttn {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 180px;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid #444857;
+  color: #444857;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.buttn:hover {
+  color: white;
+  background: #444857;
+}
+.buttn:active {
+  letter-spacing: 2px;
+}
+.buttn::after{
+  content: "SUBMIT";
+  
+}
+/* #.buttn1:after {
+  content: "POOL FUSION";
+}
+#.buttn2:after {
+  content: "POOL INTERSECTION";
+} */
+.onclic {
+  width: 40px;
+  border-color: #bbbbbb;
+  border-width: 3px;
+  font-size: 0;
+  border-left-color: #444857;
+  -webkit-animation: rotating 2s 0.25s linear infinite;
+          animation: rotating 2s 0.25s linear infinite;
+}
+.onclic:after {
+  content: "";
+}
+.onclic:hover {
+  color: #444857;
+  background: white;
+}
+
+.validate {
+  font-size: 13px;
+  color: white;
+  background: #444857;
+}
+.validate:after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.validate1 {
+    font-size: 13px;
+    color: white;
+    background: #444857;
+  }
+.validate1:after {
+    font-family: "FontAwesome";
+    content: "\f00c";
+  }
+
+@-webkit-keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

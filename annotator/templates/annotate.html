@@ -1,0 +1,73 @@
+<!-- ---------------------------------------------- -->
+<!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+<!-- @date: 25/11/2020 -->
+<!-- ---------------------------------------------- -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/static/css/annotate.css">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://kowndinya2000.github.io/header-logo.github.io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://kowndinya2000.github.io/header-logo.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://kowndinya2000.github.io/header-logo.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://kowndinya2000.github.io/header-logo.github.io/site.webmanifest">
+  <title>Annotate</title>
+</head>
+
+<body>
+  <section class="hero is-primary is-fullheight">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div id="paint">
+      <canvas id="canvas" resize></canvas>
+    </div>
+
+    <div id=leftbar class="sidebar">
+      <form method="post" id="new_message" action="/add">
+        <p>
+          <input type="button" class="button" value="draw" onclick="use_tool('draw');" />
+          <input type="button" value="erase" onclick="use_tool('erase');" />
+        </p>
+        <p>
+          <label for="annotation">Annotation:</label><input id="annotation" type="text" size=2>
+          <input type="submit" value="Send" name="commit" id="message_submit" />
+        </p>
+        <p>
+          <input type="button" value="Previous" name="Previous" id="Previous">
+          <input type="button" value="Next" name="next" id="next">
+        </p>
+      </form>
+      <form action="/annotate" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" value="Upload" id="Upload">
+      </form>
+      <p>
+        <a href="/connect" class="button">
+          Profile
+        </a>
+        <a href="/logout" class="button">
+          Logout
+        </a>
+      </p>
+    </div>
+
+
+    <script type="text/javascript" src="static/scripts/tools.js"></script>
+  </section>
+
+  <iframe src="pool.html" style="width:100%;height:20rem;bottom:2rem;">
+  </iframe>
+</body>
+
+</html>

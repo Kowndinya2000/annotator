@@ -1,0 +1,99 @@
+<!-- ---------------------------------------------- -->
+<!-- @author: Kowndinya Boyalakuntla <cs17b032@iittp.ac.in> -->
+<!-- @date: 25/11/2020 -->
+<!-- ---------------------------------------------- -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign Up | Annotator</title>
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://kowndinya2000.github.io/header-logo.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://kowndinya2000.github.io/header-logo.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://kowndinya2000.github.io/header-logo.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://kowndinya2000.github.io/header-logo.github.io/site.webmanifest">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cs17b008.github.io/btp-resources.github.io/login.css">
+</head>
+
+<body style="background: #fff;">
+    <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/wave-left.svg" alt=""
+        style="position: absolute;left: 0;">
+    <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/wave-left.svg" alt=""
+        style="position: absolute;right: 0;transform: rotate(180deg);bottom: 5;">
+    <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/wave-header.svg" alt=""
+        style="left: 0;bottom: 0;position: absolute;transform: rotate(180deg);width: 100%;">
+    <div style="display: flex;height: 10rem;padding-top: 2rem;position: absolute;width: 55rem;">
+        <div style="flex: 1;">
+            <img src="https://kowndinya2000.github.io/profile-auto-annotator.github.io/logo.png" alt="" id="logo"
+                style="width: auto;height: 100%;float: right;">
+        </div>
+        <div style="flex: 1;">
+            <h2
+                style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-align: center;margin: auto;padding: auto;width: 100%;height: 100%;font-weight: bold;color: #000;margin-top: 2rem;font-size: larger;">
+                <span style="color: #1763E9;">ANNOTATOR</span> <br>
+                Auto Annotation Platform for Digital Documents
+            </h2>
+        </div>
+    </div>
+    <div class="container" style="padding-top: 7rem;background: #fff;">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box" style="border-radius: 1rem;background: #000;">
+                <div class="col-lg-12" style="color: red;color: #0DB8DE;">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}. Go to <a href="/login">login page</a>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form method="POST" action="/signup">
+                            <div class="form-group">
+                                <label class="form-control-label">USERNAME</label>
+                                <input type="text" class="form-control" name="name" autocomplete="username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" class="form-control" name="password" autocomplete="new-password">
+                            </div>
+
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+
+                                </div>
+
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        SIGNUP
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
