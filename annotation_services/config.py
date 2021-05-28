@@ -1,1 +1,1 @@
-root_directory = "/home/vijay/Desktop/anno-testing-master/annotation_services"
+root_directory = "C:\\BTP-Code Refactoring\\annotator-web-tool\\annotation_services"
