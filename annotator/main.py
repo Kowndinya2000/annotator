@@ -323,7 +323,7 @@ def trainMODEL():
         if(is_model_needed(annotation,user_id,1)):
             request_data = annotation + "," + user_id
             try:
-                r = requests.post('http://0.0.0.0:7002/build/'+doc,data=request_data)
+                r = requests.post('http://0.0.0.0:5002/build/'+doc,data=request_data)
                 return_response = r.text
                 print('---------------')
                 print(return_response)
@@ -617,7 +617,7 @@ def fetch_model_annotations():
         folder = request.args.get('folder')
         im_name = request.args.get('image')
         print(collection, mode, useremail, folder, im_name)
-        url_server = "http://0.0.0.0:7001/predict/"+pool_name + "/" + useremail
+        url_server = "http://0.0.0.0:5001/predict/"+pool_name + "/" + useremail
         image_path = os.getcwd()+ '/' + __name__.replace(".main","")+"/Images/"+folder+"/"+im_name
         fin = open(image_path, 'rb')
         files = {'file': fin}

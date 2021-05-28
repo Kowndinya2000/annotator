@@ -68,4 +68,4 @@ def build_a_model(document):
 # the ip 0.0.0.0 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=7002, debug=True)
+	app.run(host='0.0.0.0', port=5002, debug=True)

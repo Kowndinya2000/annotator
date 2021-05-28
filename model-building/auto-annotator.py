@@ -68,4 +68,4 @@ def upload_file_pronoun(pool_name,user):
 #main route running on port number 7001 and hosting on the
 #IP address 0.0.0.0
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=7001, debug=True)
+	app.run(host='0.0.0.0', port=5001, debug=True)
