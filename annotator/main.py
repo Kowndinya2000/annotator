@@ -6,11 +6,6 @@ to the functions in this script.
 For example,
     @main.route('/annotate'): maps the urls starting with '/annotate'
 '''
-#-----------------------------------------------------
-# @author: DANDE TEJA          <cs17b010@iittp.ac.in>
-# @date: 21/05/2021
-#-----------------------------------------------------
-
 from time import sleep
 from pymongo import MongoClient
 from flask import Blueprint, render_template, request, flash, jsonify, make_response,redirect,url_for,request
