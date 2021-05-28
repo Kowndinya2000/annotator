@@ -12,13 +12,13 @@ https://services.iittp.ac.in/annotator
 ## ```>``` Steps to setup Akshara
 ---
 ## Initial setup
-### ```</>``` Open the terminal in the ```root_directory```
+### ```</>``` Open a ```terminal``` in the ```root_directory```
 ````
 python3 setup.py  
 ````
 ---
 ## Managing dependencies
-### ```</>``` Open ```terminal``` in the ```root_directory```
+### ```</>``` Open a ```terminal``` in the ```root_directory```
 ````
 pip install -r requirements.txt
 ````
