@@ -61,4 +61,4 @@ python3 auto-annotator.py
 chmod +x bash.sh
 ./bash.sh
 ````
-### ```3.``` Open browser, enter ```http://0.0.0.0:5000``` 
+### ```3.``` Open browser, enter ```http://0.0.0.0:4000``` 
