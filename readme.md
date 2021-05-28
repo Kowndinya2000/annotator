@@ -18,7 +18,7 @@ python3 setup.py
 ````
 ---
 ## Managing dependencies
-### ```</>``` Open ```terminal``` in the ```root_folder```
+### ```</>``` Open ```terminal``` in the ```root_directory```
 ````
 pip install -r requirements.txt
 ````
