@@ -42,9 +42,9 @@ db.createCollection('author_job')
 
 ## Starting services
 
-### Run the ```bash script``` in the  ```root_directory```
+### ```1.``` Run the ```bash script``` in the  ```root_directory```
 ````
 chmod +x bash.sh
 ./bash.sh
 ````
-### ```3.``` Open browser, enter ```http://0.0.0.0:7700``` 
+### ```2.``` Open browser, enter ```http://0.0.0.0:7700``` 
