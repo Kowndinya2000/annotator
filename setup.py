@@ -27,9 +27,9 @@ if(platform == "win32"):
     fp.write("python3 "+'''"'''+rootDir+'''\\\\model-building\\\\build-model.py" &\n''')
     fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plugk_annada-annotator.py" &\n''')
     fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug-telugu-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug-tamil-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug-Malayalam-annotator.py"\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug_telugu-annotator.py" &\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug_tamil-annotator.py" &\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''\\\\annotation_services\\\\plug_Malayalam-annotator.py"\n''')
     fp.close()
 
 else:
@@ -57,7 +57,7 @@ else:
     fp.write("python3 "+'''"'''+rootDir+'''/model-building/build-model.py" &\n''')
     fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plugk_annada-annotator.py" &\n''')
     fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug-telugu-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug-tamil-annotator.py" &\n''')
-    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug-Malayalam-annotator.py"\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug_telugu-annotator.py" &\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug_tamil-annotator.py" &\n''')
+    fp.write("python3 "+'''"'''+rootDir+'''/annotation_services/plug_Malayalam-annotator.py"\n''')
     fp.close()
